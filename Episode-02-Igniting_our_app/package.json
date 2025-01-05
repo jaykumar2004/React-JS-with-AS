@@ -1,0 +1,36 @@
+{
+  "name": "episode-02-igniting_our_app",
+  "version": "1.0.0",
+  "description": "This is namaste react by akshay saini",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaykumar2004/React-JS-with-AS.git#main"
+  },
+  "keywords": [
+    "react",
+    "namaste",
+    "react",
+    "jay",
+    "kumar"
+  ],
+  "author": "akshay saini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaykumar2004/React-JS-with-AS/issues"
+  },
+  "homepage": "https://github.com/jaykumar2004/React-JS-with-AS/tree/main#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "browserslist":[
+    "last 2 versions"
+]
+}
