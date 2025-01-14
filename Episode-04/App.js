@@ -23,12 +23,13 @@ const Header = () =>{
 
 const RestaurantCard = (props) => {
     const {resData} = props;
+    const {name, cloudinaryImageId, cuisines, avgRating}  = resData.info;
     return(
         <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
             <img 
             className="res-logo"
             alt="res-logo" src={
-                "MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/" +resData.info.cloudinaryImageId + ".png"
+                "MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/" +cloudinaryImageId 
                 } />
             <h3>{resData.info.name}</h3>
             <h4>{resData.info.cuisines.join(", ")}</h4> 
