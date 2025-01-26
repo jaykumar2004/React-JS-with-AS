@@ -1,4 +1,4 @@
-const resList = [
+let resList = [
     {
       "info": {
         "id": "513065",
@@ -118,7 +118,7 @@ const resList = [
           "Kebabs",
           "Desserts"
         ],
-        "avgRating": 4.3,
+        "avgRating": 3.7,
         "parentId": "322587",
         "avgRatingString": "4.3",
         "totalRatingsString": "839",
@@ -512,7 +512,7 @@ const resList = [
           "Mughlai",
           "Awadhi"
         ],
-        "avgRating": 4.3,
+        "avgRating": 3.5,
         "parentId": "6302",
         "avgRatingString": "4.3",
         "totalRatingsString": "15K+",
@@ -918,7 +918,7 @@ const resList = [
           "Desserts",
           "Beverages"
         ],
-        "avgRating": 4.5,
+        "avgRating": 3.8,
         "parentId": "429673",
         "avgRatingString": "4.5",
         "totalRatingsString": "610",
@@ -1189,7 +1189,7 @@ const resList = [
           "Fast Food",
           "Rolls & Wraps"
         ],
-        "avgRating": 4.3,
+        "avgRating": 3.1,
         "parentId": "547",
         "avgRatingString": "4.3",
         "totalRatingsString": "1.6K+",
@@ -1487,10 +1487,10 @@ const resList = [
         "cuisines": [
           "Snacks"
         ],
-        "avgRating": 4.4,
+        "avgRating": 3.9,
         "veg": true,
         "parentId": "385095",
-        "avgRatingString": "4.4",
+        "avgRatingString": "3.2",
         "totalRatingsString": "23",
         "sla": {
           "deliveryTime": 54,
