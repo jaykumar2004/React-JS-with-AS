@@ -1,11 +1,20 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 
 const Body = () => {
 
     //local state variable - Super Powerful variable
     const [ListOfResturant, setListOfResturant] = useState(resList);
+
+    useEffect(()=>{
+        fetchData();
+    }, []);
+
+    const fetchData = ()=>{
+        const data = fetch();
+    }
+
     return(
         <div className="body">
             <div className="filter">
