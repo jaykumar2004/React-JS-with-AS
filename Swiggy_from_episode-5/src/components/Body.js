@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
     // Local state variable
@@ -21,14 +22,19 @@ const Body = () => {
         const restaurants = json?.data?.cards
             ?.find(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants)
             ?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-        console.log(restaurants);
         
 
         setListOfResturant(restaurants);
         setFilteredRestaurants(restaurants); // Initial state with full list
     };
 
-    return (
+
+    //conditional rendering
+    // if(ListOfResturant.length ===0){
+    //     return <Shimmer/>;
+    // }
+
+    return ListOfResturant.length === 0 ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
                 <button
