@@ -62,12 +62,3 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
-
-
-
-
-
-
-// https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.77508727955646&lng=75.85139371454716&restaurantId=220706&catalog_qa=undefined&submitAction=ENTER
-
-// https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.77508727955646&lng=75.85139371454716&restaurantId=59274&catalog_qa=undefined&submitAction=ENTER
