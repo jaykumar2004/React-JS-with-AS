@@ -11,17 +11,18 @@ const Header = () =>{
     //if no dependency array => useEffect is called on every render
     //if dependency array is empty = [] => useEffect is called on initial render (just once) 
     //if dependency array is [btnNameReact] => called every time btnNameReact is updated
+
     useEffect(()=>{
         console.log("useEffect rendered");
     }, [btnNameReact]);
     return(
-        <div className="header">
+        <div className="flex justify-between bg-red-100">
             <div className="logo-container">
-                <img className="logo" src={LOGO_URL} 
+                <img className="w-56" src={LOGO_URL} 
                 />
             </div>
             <div className="nav-items">
-                <ul>
+                <ul className="flex p-4 m-4">
                     <li>
                         Online Statue :{onlineStatus ? "✅" : "🔴"}
                     </li>
