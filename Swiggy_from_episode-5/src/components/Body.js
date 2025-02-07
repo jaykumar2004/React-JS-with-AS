@@ -45,17 +45,34 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        {/* Search Box */}
-        <div className="search">
+      {/* Filter and Search Section */}
+      <div className="filter flex justify-between items-center m-4">
+        {/* Left: Top Rated Button */}
+        <div className="top-rated-btn flex items-center">
+          <button
+            className="px-4 py-2 bg-orange-100 rounded-lg cursor-pointer"
+            onClick={() => {
+              const filteredList = ListOfResturant.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setFilteredRestaurants(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
+
+        {/* Right: Search Box */}
+        <div className="search flex items-center">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black px-3 py-2 rounded-lg"
             placeholder="Search Restaurants..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+            className="px-4 py-2 bg-orange-100 ml-2 rounded-lg cursor-pointer"
             onClick={() => {
               const filteredRestaurant = ListOfResturant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -66,23 +83,10 @@ const Body = () => {
             Search
           </button>
         </div>
-
-        {/* Filter Top Rated Restaurants */}
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = ListOfResturant.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setFilteredRestaurants(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
       </div>
 
-      {/* Render Restaurant Cards */}
-      <div className="res-container">
+      {/* Render Restaurant Cards with Grid Layout */}
+      <div className="grid grid-cols-5 gap-2">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
