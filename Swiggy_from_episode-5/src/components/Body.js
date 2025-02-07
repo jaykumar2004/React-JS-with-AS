@@ -1,7 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // State variables
@@ -23,13 +24,22 @@ const Body = () => {
     console.log(json);
 
     // Extract restaurant data properly
-    const restaurants = json?.data?.cards
-      ?.find((card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      ?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+    const restaurants =
+      json?.data?.cards?.find(
+        (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
     setListOfResturant(restaurants);
     setFilteredRestaurants(restaurants); // Set both states initially
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks Like you're Offline!!! Please Check your Internet Connection
+      </h1>
+    );
 
   return ListOfResturant.length === 0 ? (
     <Shimmer />
@@ -76,7 +86,7 @@ const Body = () => {
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
-            to={"/restaurants/"+ restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
           >
             <RestaurantCard resData={restaurant} />
           </Link>
