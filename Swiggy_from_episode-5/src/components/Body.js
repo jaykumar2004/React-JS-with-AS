@@ -44,13 +44,13 @@ const Body = () => {
   return ListOfResturant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body min-h-screen p-4">
       {/* Filter and Search Section */}
       <div className="filter flex justify-between items-center m-4">
         {/* Left: Top Rated Button */}
         <div className="top-rated-btn flex items-center">
           <button
-            className="px-4 py-2 bg-orange-100 rounded-lg cursor-pointer"
+            className="px-4 py-2 bg-orange-400 rounded-lg cursor-pointer"
             onClick={() => {
               const filteredList = ListOfResturant.filter(
                 (res) => res.info.avgRating > 4

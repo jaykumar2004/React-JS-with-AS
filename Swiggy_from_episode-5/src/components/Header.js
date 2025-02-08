@@ -9,52 +9,50 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  //if no dependency array => useEffect is called on every render
-  //if dependency array is empty = [] => useEffect is called on initial render (just once)
-  //if dependency array is [btnNameReact] => called every time btnNameReact is updated
-
   useEffect(() => {
     console.log("useEffect rendered");
   }, [btnNameReact]);
+
   return (
-    <div className="flex justify-between items-center bg-orange-400 shadow-lg px-6 py-3">
-      <div className="logo-container">
+    <div className="flex justify-between items-center bg-gray-900 shadow-lg px-5 py-2">
+      {/* Logo and Restaurant Name */}
+      <div className="flex items-center space-x-4">
         <Link to="/">
-          <img className="w-30" src={LOGO_URL} />
+          <img className="w-20 rounded-full" src={LOGO_URL} alt="Website Logo" />
         </Link>
+        <h1 className="text-white text-3xl font-bold italic font-cursive">JAY DA DABHA</h1>
       </div>
+
       <div className="flex items-center">
         <ul className="flex items-center space-x-8 text-white font-semibold">
           <li className="flex items-center space-x-2 text-xl">
-            Online Statue :{onlineStatus ? "✅" : "🔴"}
+            Online Status: {onlineStatus ? "✅" : "🔴"}
           </li>
           <li className="flex items-center space-x-2 text-xl">
-            <Home size={20} />
+            <Home className="w-5 h-5" aria-label="Home" />
             <Link to="/">Home</Link>
           </li>
           <li className="flex items-center space-x-2 text-xl">
-            <Info size={20} />
+            <Info className="w-5 h-5" aria-label="About" />
             <Link to="/about">About us</Link>
           </li>
           <li className="flex items-center space-x-2 text-xl">
-            <Phone size={20} />
+            <Phone className="w-5 h-5" aria-label="Contact" />
             <Link to="/contact">Contact us</Link>
           </li>
           <li className="flex items-center space-x-2 text-xl">
-            <Store size={20} />
+            <Store className="w-5 h-5" aria-label="Grocery" />
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="flex items-center space-x-2 text-xl">
-          <ShoppingCart size={20} />
+            <ShoppingCart className="w-5 h-5" aria-label="Cart" />
             <span>Cart</span>
-            </li>
+          </li>
           <button
             className="bg-white text-orange-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 transition"
-            onClick={() => {
-              btnNameReact === "Login"
-                ? setbtnNameReact("Logout")
-                : setbtnNameReact("Login");
-            }}
+            onClick={() =>
+              setbtnNameReact(btnNameReact === "Login" ? "Logout" : "Login")
+            }
           >
             {btnNameReact}
           </button>
@@ -63,4 +61,5 @@ const Header = () => {
     </div>
   );
 };
+
 export default Header;
