@@ -20,7 +20,7 @@ const Header = () => {
         <Link to="/">
           <img className="w-20 rounded-full" src={LOGO_URL} alt="Website Logo" />
         </Link>
-        <h1 className="text-white text-3xl font-bold italic font-cursive">JAY DA DABHA</h1>
+        <h1 className="text-white text-3xl font-bold ">JAY DA DABHA</h1>
       </div>
 
       <div className="flex items-center">

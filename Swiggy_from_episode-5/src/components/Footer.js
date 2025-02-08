@@ -19,7 +19,7 @@ const Footer = () => {
               <h2 className="text-2xl font-bold">JAY DA DABHA</h2>
             </div>
             <p className="text-gray-400">
-              Delivering the best experiences since 2023. Join us on our journey to make life easier and better.
+              Delivering the best experiences since 2025. Join us on our journey to make life easier and better.
             </p>
           </div>
 
