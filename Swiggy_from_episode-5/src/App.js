@@ -8,7 +8,11 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Footer from "./components/Footer";
+import Privacy from "./components/Priyacy";
+import Terms from "./components/Terms";
+import Refund from "./components/Refund";
 //import Grocery from "./components/Grocery";
+
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -51,6 +55,18 @@ const appRouter = createBrowserRouter([
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
+      {
+        path:"/privacy-policy",
+        element:<Privacy/>
+      },
+      {
+        path: "/terms-of-service",
+        element:<Terms/>
+      },
+      {
+        path:"/refund-policy",
+        element:<Refund/>
+      }
     ],
     errorElement: <Error />,
   },
