@@ -1,10 +1,11 @@
 import ItemList from "./ItemList";
-
+import {useState} from "react";
 const RestaurantCategory = ({ data }) => {
 
+  const [showItems, setShowItems] = useState(false);
 
   const handleClick = () => {
-    console.log("clicked")
+    setShowItems(!showItems);
   }
   return (
     <div>
@@ -16,7 +17,7 @@ const RestaurantCategory = ({ data }) => {
         </span>
         <span>⬇️</span>
         </div>
-        <ItemList items = {data.itemCards}/>
+        {showItems && <ItemList items = {data.itemCards}/>}
       </div>
       {/**Accordion body */}
 
