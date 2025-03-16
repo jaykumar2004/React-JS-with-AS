@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { Home, Info, Phone, ShoppingCart, Store } from "lucide-react";
 import UserContext from "../utils/userContext";
-
+import { useSelector } from "react-redux";
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
 
@@ -16,6 +16,10 @@ const Header = () => {
   useEffect(() => {
     console.log("useEffect rendered");
   }, [btnNameReact]);
+
+
+  //subscribing to the store using selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between items-center bg-gray-900 shadow-lg px-5 py-2">
@@ -50,7 +54,7 @@ const Header = () => {
           </li>
           <li className="flex items-center space-x-2 text-xl">
             <ShoppingCart className="w-5 h-5" aria-label="Cart" />
-            <span>Cart</span>
+            <span>Cart - ({cartItems.length} items)</span>
           </li>
           <button
             className="bg-white text-orange-500 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 transition"

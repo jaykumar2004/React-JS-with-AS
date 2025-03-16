@@ -12,6 +12,8 @@ import Privacy from "./components/Priyacy";
 import Terms from "./components/Terms";
 import Refund from "./components/Refund";
 import UserContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 //import Grocery from "./components/Grocery";
 
 
@@ -32,6 +34,7 @@ const AppLayout = () => {
   },[])
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedUser : userName, setUserName}}>
     <div className="app">
       <Header />
@@ -39,6 +42,7 @@ const AppLayout = () => {
       <Footer/>
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
