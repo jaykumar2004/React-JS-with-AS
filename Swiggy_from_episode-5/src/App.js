@@ -14,55 +14,48 @@ import Refund from "./components/Refund";
 import UserContext from "./utils/userContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-//import Grocery from "./components/Grocery";
+import Cart from "./components/Cart";
 
-
+// Lazy loading Grocery component
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
 
-  const[userName, setUserName] = useState();
-
-  //authentication logic
-  useEffect(()=>{
-    //Make an API call and send username and password
+  // Simulate fetching user data
+  useEffect(() => {
     const data = {
-      name :"Jay Kumar"
-    }
-    setUserName(data.name)
-    
-  },[])
+      name: "Jay Kumar",
+    };
+    setUserName(data.name);
+  }, []);
 
   return (
     <Provider store={appStore}>
-    <UserContext.Provider value={{loggedUser : userName, setUserName}}>
-    <div className="app">
-      <Header />
-      <Outlet />
-      <Footer/>
-    </div>
-    </UserContext.Provider>
+      <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
+        {/* Full-screen layout with flexbox to keep footer at the bottom */}
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          {/* This ensures that content takes up available space, pushing the footer down */}
+          <main className="flex-grow">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </UserContext.Provider>
     </Provider>
   );
 };
 
+// Define routes
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
     children: [
-      {
-        path: "/",
-        element: <Body />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
+      { path: "/", element: <Body /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
       {
         path: "/grocery",
         element: (
@@ -71,22 +64,11 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
-      },
-      {
-        path:"/privacy-policy",
-        element:<Privacy/>
-      },
-      {
-        path: "/terms-of-service",
-        element:<Terms/>
-      },
-      {
-        path:"/refund-policy",
-        element:<Refund/>
-      }
+      { path: "/restaurants/:resId", element: <RestaurantMenu /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/privacy-policy", element: <Privacy /> },
+      { path: "/terms-of-service", element: <Terms /> },
+      { path: "/refund-policy", element: <Refund /> },
     ],
     errorElement: <Error />,
   },

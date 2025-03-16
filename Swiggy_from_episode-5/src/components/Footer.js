@@ -4,83 +4,61 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12 mt-20">
+    <footer className="  py-4 mt-auto w-full text-sm">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           
           {/* Column 1: Logo and Description */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center">
               <img 
-                src="https://i.pinimg.com/736x/50/25/c2/5025c2d7b50f1b0f69e735483accd2fc.jpg" 
+                src="https://1000logos.net/wp-content/uploads/2021/05/Swiggy-emblem.png" 
                 alt="Logo" 
-                className="h-12 w-12 rounded-full mr-4"
+                className="h-8 w-15 rounded-full mr-3"
               />
-              <h2 className="text-2xl font-bold">JAY DA DABHA</h2>
+              <h2 className="text-lg font-bold">SWIGGY</h2>
             </div>
-            <p className="text-gray-400">
+            <p className="text-black ">
               Delivering the best experiences since 2025. Join us on our journey to make life easier and better.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition">About</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition">Contact</Link>
-              </li>
-              <li>
-                <Link to="/grocery" className="text-gray-400 hover:text-white transition">Grocery</Link>
-              </li>
+          <div className="space-y-3">
+            <h3 className="text-orange-400 text-base font-bold">Quick Links</h3>
+            <ul className="space-y-1">
+              <li><Link to="/" className="text-black hover:text-orange-400 transition">Home</Link></li>
+              <li><Link to="/about" className="text-black hover:text-orange-400 transition">About</Link></li>
+              <li><Link to="/contact" className="text-black hover:text-orange-400 transition">Contact</Link></li>
+              <li><Link to="/grocery" className="text-black hover:text-orange-400 transition">Grocery</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Legal */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link to="/terms-of-service" className="text-gray-400 hover:text-white transition">Terms of Service</Link>
-              </li>
-              <li>
-                <Link to="/refund-policy" className="text-gray-400 hover:text-white transition">Refund Policy</Link>
-              </li>
+          <div className="space-y-3">
+            <h3 className="text-orange-400 text-base font-bold">Legal</h3>
+            <ul className="space-y-1">
+              <li><Link to="/privacy-policy" className="text-black hover:text-orange-400 transition">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="text-black hover:text-orange-400 transition">Terms of Service</Link></li>
+              <li><Link to="/refund-policy" className="text-black hover:text-orange-400 transition">Refund Policy</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Social Media */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
-                <FaFacebook size={24} />
-              </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
-                <FaTwitter size={24} />
-              </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
-                <FaInstagram size={24} />
-              </a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
-                <FaLinkedin size={24} />
-              </a>
+          <div className="space-y-3">
+            <h3 className="text-orange-400 text-base font-bold">Follow Us</h3>
+            <div className="flex space-x-3">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-orange-400 transition"><FaFacebook size={20} /></a>
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-orange-400 transition"><FaTwitter size={20} /></a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-orange-400 transition"><FaInstagram size={20} /></a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-orange-400 transition"><FaLinkedin size={20} /></a>
             </div>
           </div>
 
         </div>
 
         {/* Bottom: Copyright */}
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-700 mt-6 pt-3 text-center text-black text-xs">
           <p>&copy; {new Date().getFullYear()} JayDaDabha. All rights reserved.</p>
         </div>
       </div>
