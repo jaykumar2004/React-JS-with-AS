@@ -20,14 +20,15 @@ import Cart from "./components/Cart";
 const Grocery = lazy(() => import("./components/Grocery"));
 
 // Constant Header component
-const AppHeader = () => (
+const AppHeader = ({ searchText, onSearch }) => (
   <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-    <Header />
+    <Header searchText={searchText} onSearch={onSearch} />
   </div>
 );
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
+  const [searchText, setSearchText] = useState("");
 
   // Simulate fetching user data
   useEffect(() => {
@@ -37,15 +38,19 @@ const AppLayout = () => {
     setUserName(data.name);
   }, []);
 
+  const handleSearch = (text) => {
+    setSearchText(text);
+  };
+
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
         {/* Full-screen layout with flexbox to keep footer at the bottom */}
         <div className="min-h-screen flex flex-col">
-          <AppHeader />
+          <AppHeader searchText={searchText} onSearch={handleSearch} />
           {/* Add padding-top to account for fixed header */}
           <main className="flex-grow pt-[80px]">
-            <Outlet />
+            <Outlet context={{ searchText }} />
           </main>
           <Footer />
         </div>
@@ -60,7 +65,14 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
-      { path: "/", element: <Body /> },
+      { 
+        path: "/", 
+        element: <Body />,
+        loader: ({ request }) => {
+          const url = new URL(request.url);
+          return { searchText: url.searchParams.get("q") || "" };
+        }
+      },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       {

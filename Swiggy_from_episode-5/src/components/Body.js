@@ -1,24 +1,29 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
-
 
 const Body = () => {
   // State variables
   const [ListOfResturant, setListOfResturant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchText, setSearchText] = useState("");
-
-  console.log(ListOfResturant);
+  const { searchText } = useOutletContext();
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    // Filter restaurants based on search text
+    const filtered = ListOfResturant.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurants(filtered);
+  }, [searchText, ListOfResturant]);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -47,7 +52,7 @@ const Body = () => {
       </h1>
     );
 
-    const{loggedUser,setUserName} = useContext(UserContext);
+  const { loggedUser, setUserName } = useContext(UserContext);
 
   return ListOfResturant.length === 0 ? (
     <Shimmer />
@@ -70,36 +75,13 @@ const Body = () => {
           </button>
         </div>
 
-
-
         <div className="top-rated-btn flex items-center">
           <label className="font-bold text-2xl p-2">User Name : </label>
-          <input className="border border-black p-1 rounded-lg"
-          value={loggedUser}
-          onChange={(e)=>setUserName(e.target.value)}/>
-        </div>
-
-
-        {/* Right: Search Box */}
-        <div className="search flex items-center">
-          <input
-            type="text"
-            className="border border-solid border-black px-3 py-2 rounded-lg"
-            placeholder="Search Restaurants..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+          <input 
+            className="border border-black p-1 rounded-lg"
+            value={loggedUser}
+            onChange={(e) => setUserName(e.target.value)}
           />
-          <button
-            className="px-4 py-2 bg-orange-100 ml-2 rounded-lg cursor-pointer"
-            onClick={() => {
-              const filteredRestaurant = ListOfResturant.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRestaurant);
-            }}
-          >
-            Search
-          </button>
         </div>
       </div>
 
