@@ -19,6 +19,13 @@ import Cart from "./components/Cart";
 // Lazy loading Grocery component
 const Grocery = lazy(() => import("./components/Grocery"));
 
+// Constant Header component
+const AppHeader = () => (
+  <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+    <Header />
+  </div>
+);
+
 const AppLayout = () => {
   const [userName, setUserName] = useState();
 
@@ -35,9 +42,9 @@ const AppLayout = () => {
       <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
         {/* Full-screen layout with flexbox to keep footer at the bottom */}
         <div className="min-h-screen flex flex-col">
-          <Header />
-          {/* This ensures that content takes up available space, pushing the footer down */}
-          <main className="flex-grow">
+          <AppHeader />
+          {/* Add padding-top to account for fixed header */}
+          <main className="flex-grow pt-[80px]">
             <Outlet />
           </main>
           <Footer />
